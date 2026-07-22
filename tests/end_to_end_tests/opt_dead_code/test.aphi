@@ -1,0 +1,11 @@
+int A;
+int B;
+int C;
+
+procedure main {
+    A = 10;
+    B = 20;
+    A = 40;
+    B = 50;
+    C = A + B;
+}

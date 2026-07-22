@@ -1,0 +1,10 @@
+bool COND;
+int RES;
+
+procedure main {
+    if (COND) {
+        RES = 1;
+    } else {
+        RES = 0;
+    }
+}

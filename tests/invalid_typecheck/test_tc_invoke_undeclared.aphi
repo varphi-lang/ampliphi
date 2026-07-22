@@ -1,0 +1,8 @@
+/*
+Type-check error: Unknown identifier 'doesNotExist'.
+Invokes a procedure that was never declared.
+*/
+
+procedure main {
+    invoke doesNotExist;
+}

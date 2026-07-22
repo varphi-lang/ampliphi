@@ -1,0 +1,6 @@
+bool A;
+bool RES;
+
+procedure main {
+    RES = !A;
+}

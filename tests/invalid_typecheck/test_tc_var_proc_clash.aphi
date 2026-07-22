@@ -1,0 +1,9 @@
+/*
+Type-check error: Redefinition of identifier (variable and procedure same name).
+A variable and a procedure both use the name 'main'.
+*/
+
+int main;
+
+procedure main {
+}

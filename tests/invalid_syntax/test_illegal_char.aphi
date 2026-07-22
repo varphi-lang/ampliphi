@@ -1,0 +1,5 @@
+/*
+Demonstrates: Illegal character not in Ampliphi alphabet
+*/
+
+int x$;

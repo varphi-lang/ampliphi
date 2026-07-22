@@ -1,0 +1,9 @@
+/*
+Demonstrates: Missing right-hand side
+*/
+
+int x;
+
+procedure main {
+    x = ;
+}

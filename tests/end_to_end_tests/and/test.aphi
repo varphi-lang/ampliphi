@@ -1,0 +1,7 @@
+bool A;
+bool B;
+bool RES;
+
+procedure main {
+    RES = A && B;
+}

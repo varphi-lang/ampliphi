@@ -1,0 +1,5 @@
+/*
+Demonstrates: Invalid variable declaration (missing semicolon)
+*/
+
+int x

@@ -1,0 +1,11 @@
+/*
+Type-check error: Redefinition of identifier (duplicate variable declaration).
+Two variables share the same name 'x'.
+*/
+
+int x;
+int x;
+
+procedure main {
+    x = 1;
+}

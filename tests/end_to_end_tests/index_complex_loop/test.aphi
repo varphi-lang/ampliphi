@@ -1,0 +1,18 @@
+int[5] A;
+int I;
+int ONE;
+int SUM;
+bool C;
+
+procedure main {
+    ONE = 1;
+    I = 0;
+    SUM = 0;
+    C = true;
+
+    while (C) {
+        SUM = SUM + A[I];
+        I = I + ONE;
+        C = I < 5;
+    }
+}

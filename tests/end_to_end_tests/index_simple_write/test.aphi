@@ -1,0 +1,10 @@
+int[3] A;
+int I;
+int V;
+
+procedure main {
+    A[0] = 0;
+    A[1] = 0;
+    A[2] = 0;
+    A[I] = V;
+}

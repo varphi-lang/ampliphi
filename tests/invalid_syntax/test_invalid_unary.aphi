@@ -1,0 +1,9 @@
+/*
+Demonstrates: Invalid use of unary operators
+*/
+
+bool b;
+
+procedure main {
+    b = !!true;
+}

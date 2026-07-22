@@ -1,0 +1,16 @@
+int[4] A;
+int I;
+int ONE;
+int TMP;
+
+procedure main {
+    ONE = 1;
+
+    A[0] = 3;
+    A[1] = 6;
+    A[2] = 9;
+    A[3] = 12;
+
+    TMP = A[I];
+    A[I] = TMP + ONE;
+}

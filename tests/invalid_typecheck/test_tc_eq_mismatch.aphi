@@ -1,0 +1,14 @@
+/*
+Type-check error: Mismatched operand types for '==' (int and bool).
+Compares an int variable with a bool variable using '=='.
+*/
+
+int x;
+bool b;
+bool r;
+
+procedure main {
+    x = 1;
+    b = true;
+    r = x == b;
+}

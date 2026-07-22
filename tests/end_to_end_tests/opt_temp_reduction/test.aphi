@@ -1,0 +1,27 @@
+int A;
+int B;
+int C;
+int D;
+int E;
+int T1;
+int T2;
+int T3;
+int T4;
+int T5;
+int RESULT;
+
+procedure main {
+    // A, B, C, D, E are provided by input, so they are BOTTOM
+    // This complex expression will generate many temporary variables
+    // The temp reduction pass should reuse them efficiently
+    T1 = A + B;
+    T2 = C + D;
+    T3 = E + A;
+    T4 = B + C;
+    T5 = D + E;
+    
+    RESULT = T1 + T2;
+    RESULT = RESULT + T3;
+    RESULT = RESULT + T4;
+    RESULT = RESULT + T5;
+}

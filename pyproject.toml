@@ -1,0 +1,29 @@
+[project]
+name = "ampliphi"
+version = "1.0.0"
+description = "A compiler for Ampliphi with target Varphi."
+readme = "README.md"
+authors = [
+    { name = "Hassan El-Sheikha", email = "hassan.elsheikha@utoronto.ca" },
+    { name = "Kevin Thevara", email = "kevin.thevara@mail.utoronto.ca" },
+    { name = "Youssef Abouzied", email = "youssef.abouzied@mail.utoronto.ca" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "questionary>=2.1.1",
+    "rich>=14.3.2",
+    "typer>=0.21.1",
+    "varphi-python>=2.0.6",
+]
+
+[project.scripts]
+ampliphi = "ampliphi.main:main"
+
+[build-system]
+requires = ["uv_build>=0.9.18,<0.10.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+]

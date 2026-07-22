@@ -1,0 +1,15 @@
+/*
+Type-check error: Condition of 'if' must be bool, but 'x' has type int.
+Uses an int variable as the if condition.
+*/
+
+int x;
+
+procedure main {
+    x = 5;
+    if (x) {
+        x = 1;
+    } else {
+        x = 2;
+    }
+}

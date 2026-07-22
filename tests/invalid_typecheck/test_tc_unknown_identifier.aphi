@@ -1,0 +1,8 @@
+/*
+Type-check error: Unknown identifier 'x'.
+Assigns to a variable that was never declared.
+*/
+
+procedure main {
+    x = 5;
+}

@@ -1,0 +1,9 @@
+/*
+Parser error: Procedure defined inside another procedure.
+Procedures can only be defined at the top level.
+*/
+
+procedure main {
+    procedure inner {
+    }
+}

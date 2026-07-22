@@ -1,0 +1,10 @@
+[
+    {
+        "input": {"ZERO": 0, "ONE": 0, "ONEHUNDRED": 0},
+        "output": {"ZERO": 0, "ONE": 1, "ONEHUNDRED": 100}
+    },
+    {
+        "input": {"ZERO": 50, "ONE": 50, "ONEHUNDRED": 50},
+        "output": {"ZERO": 0, "ONE": 1, "ONEHUNDRED": 100}
+    }
+]

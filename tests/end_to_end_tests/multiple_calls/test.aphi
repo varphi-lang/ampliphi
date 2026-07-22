@@ -1,0 +1,13 @@
+int X;
+int ONE;
+
+procedure incX {
+    ONE = 1;
+    X = X + ONE;
+}
+
+procedure main {
+    X = 0;
+    invoke incX;
+    invoke incX;
+}

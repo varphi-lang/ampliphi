@@ -1,0 +1,11 @@
+/*
+Type-check error: Cannot assign to a procedure name.
+Attempts to assign a value to 'helper' which is a procedure.
+*/
+
+procedure helper {
+}
+
+procedure main {
+    helper = 5;
+}

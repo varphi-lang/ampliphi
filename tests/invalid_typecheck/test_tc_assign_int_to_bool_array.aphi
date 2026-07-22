@@ -1,0 +1,7 @@
+bool[2] flags;
+int idx;
+
+procedure main {
+    idx = 0;
+    flags[idx] = 5;
+}

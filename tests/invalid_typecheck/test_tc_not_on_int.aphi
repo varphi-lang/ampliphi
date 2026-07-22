@@ -1,0 +1,12 @@
+/*
+Type-check error: Invalid operand for '!' (expected bool, got int).
+Applies unary NOT to an int variable.
+*/
+
+int x;
+bool r;
+
+procedure main {
+    x = 5;
+    r = !x;
+}

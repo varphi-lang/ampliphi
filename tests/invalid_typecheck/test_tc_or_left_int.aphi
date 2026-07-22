@@ -1,0 +1,14 @@
+/*
+Type-check error: Invalid operand for '||' (expected bool, got int).
+Left operand of '||' is int.
+*/
+
+int x;
+bool b;
+bool r;
+
+procedure main {
+    x = 1;
+    b = true;
+    r = x || b;
+}

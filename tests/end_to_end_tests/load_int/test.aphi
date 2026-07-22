@@ -1,0 +1,9 @@
+int ZERO;
+int ONE;
+int ONEHUNDRED;
+
+procedure main {
+    ZERO = 0;
+    ONE = 1;
+    ONEHUNDRED = 100;
+}

@@ -1,0 +1,24 @@
+int[5] A;
+int I;
+int J;
+int ONE;
+int TMP;
+bool C;
+
+procedure main {
+    ONE = 1;
+    I = 0;
+    J = 4;
+    C = I < J;
+
+    while (C) {
+        TMP = A[I];
+        A[I] = A[J];
+        A[J] = TMP;
+
+        I = I + ONE;
+        J = J - ONE;
+
+        C = I < J;
+    }
+}

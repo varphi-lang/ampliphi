@@ -1,0 +1,10 @@
+[
+  {
+    "input": {"UNKNOWNIDX": 2},
+    "output": {"ARR": [10, 20, 100], "A": 30, "B": 10, "C": 30, "UNKNOWNIDX": 2}
+  },
+  {
+    "input": {"UNKNOWNIDX": 0},
+    "output": {"ARR": [100, 20, 30], "A": 30, "B": 100, "C": 30, "UNKNOWNIDX": 0}
+  }
+]

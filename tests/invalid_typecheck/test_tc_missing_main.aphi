@@ -1,0 +1,10 @@
+/*
+Type-check error: Missing 'main' procedure.
+The program has a procedure but it is not named 'main'.
+*/
+
+int x;
+
+procedure notMain {
+    x = 1;
+}

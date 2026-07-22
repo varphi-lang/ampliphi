@@ -1,0 +1,16 @@
+/*
+Parser error: Expression in if condition instead of identifier.
+The grammar requires a bare identifier in if/while conditions.
+*/
+
+int x;
+bool cond;
+
+procedure main {
+    x = 5;
+    if (x > 0) {
+        cond = true;
+    } else {
+        cond = false;
+    }
+}

@@ -1,0 +1,7 @@
+bool TRUE;
+bool FALSE;
+
+procedure main {
+    TRUE = true;
+    FALSE = false;
+}

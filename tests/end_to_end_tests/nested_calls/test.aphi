@@ -1,0 +1,17 @@
+int X;
+int ONE;
+
+procedure step1 {
+    ONE = 1;
+    X = X + ONE;
+}
+
+procedure step2 {
+    invoke step1;
+    invoke step1;
+}
+
+procedure main {
+    X = 0;
+    invoke step2;
+}

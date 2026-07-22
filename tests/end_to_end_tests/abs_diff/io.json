@@ -1,0 +1,14 @@
+[
+    {
+        "input": {"A": 10, "B": 20},
+        "output": {"A": 10, "B": 20, "DIFF": 10, "COND": false}
+    },
+    {
+        "input": {"A": 20, "B": 10},
+        "output": {"A": 20, "B": 10, "DIFF": 10, "COND": true}
+    },
+    {
+        "input": {"A": 10, "B": 10},
+        "output": {"A": 10, "B": 10, "DIFF": 0, "COND": false}
+    }
+]

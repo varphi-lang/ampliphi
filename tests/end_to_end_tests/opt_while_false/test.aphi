@@ -1,0 +1,10 @@
+int A;
+bool COND;
+
+procedure main {
+    A = 10;
+    COND = false;
+    while (COND) {
+        A = A + 1;
+    }
+}

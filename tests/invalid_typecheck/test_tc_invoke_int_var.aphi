@@ -1,0 +1,11 @@
+/*
+Type-check error: Cannot invoke 'x' because it is of type int, not a procedure.
+Tries to invoke an int variable.
+*/
+
+int x;
+
+procedure main {
+    x = 5;
+    invoke x;
+}

@@ -1,0 +1,7 @@
+int A;
+int B;
+bool RES;
+
+procedure main {
+    RES = A < B;
+}

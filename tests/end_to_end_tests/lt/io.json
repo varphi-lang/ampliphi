@@ -1,0 +1,14 @@
+[
+    {
+        "input": {"A": 10, "B": 20},
+        "output": {"A": 10, "B": 20, "RES": true}
+    },
+    {
+        "input": {"A": 20, "B": 10},
+        "output": {"A": 20, "B": 10, "RES": false}
+    },
+    {
+        "input": {"A": 10, "B": 10},
+        "output": {"A": 10, "B": 10, "RES": false}
+    }
+]

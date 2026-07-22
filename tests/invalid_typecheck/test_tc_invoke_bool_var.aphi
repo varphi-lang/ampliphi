@@ -1,0 +1,11 @@
+/*
+Type-check error: Cannot invoke 'flag' because it is of type bool, not a procedure.
+Tries to invoke a bool variable.
+*/
+
+bool flag;
+
+procedure main {
+    flag = true;
+    invoke flag;
+}

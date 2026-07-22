@@ -1,0 +1,10 @@
+[
+    {
+        "input": {"A": true},
+        "output": {"A": true, "RES": false}
+    },
+    {
+        "input": {"A": false},
+        "output": {"A": false, "RES": true}
+    }
+]

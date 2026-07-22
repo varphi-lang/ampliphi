@@ -1,0 +1,10 @@
+int X;
+
+procedure setX {
+    X = 10;
+}
+
+procedure main {
+    X = 0;
+    invoke setX;
+}

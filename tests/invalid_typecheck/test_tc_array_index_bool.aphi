@@ -1,0 +1,7 @@
+int[3] A;
+bool B;
+
+procedure main {
+    B = true;
+    A[B] = 1;
+}

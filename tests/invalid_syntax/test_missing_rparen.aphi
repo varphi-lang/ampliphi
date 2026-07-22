@@ -1,0 +1,14 @@
+/*
+Parser error: Missing closing parenthesis in if condition.
+*/
+
+bool cond;
+
+procedure main {
+    cond = true;
+    if (cond {
+        cond = false;
+    } else {
+        cond = true;
+    }
+}

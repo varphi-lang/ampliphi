@@ -1,0 +1,14 @@
+/*
+Type-check error: Invalid operand for '&&' (expected bool, got int).
+Right operand of '&&' is int.
+*/
+
+int x;
+bool b;
+bool r;
+
+procedure main {
+    x = 1;
+    b = true;
+    r = b && x;
+}

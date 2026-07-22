@@ -1,0 +1,28 @@
+int A;
+int B;
+int I;
+bool COND;
+bool FALSECOND;
+
+procedure main {
+    A = 0;
+    B = 0;
+    I = 0;
+    
+    // Constant folding should NOT fold A or I inside the loop, because they change
+    // The dataflow analysis should correctly identify them as BOTTOM inside the loop
+    COND = I < 5;
+    while (COND) {
+        A = A + 10;
+        I = I + 1;
+        COND = I < 5;
+    }
+    
+    // But this part is dead code and should be eliminated
+    FALSECOND = false;
+    if (FALSECOND) {
+        B = 100;
+    } else {
+        B = 200;
+    }
+}

@@ -1,0 +1,163 @@
+name: CI/CD
+
+on:
+  pull_request:
+    branches: ["main"]
+  push:
+    tags: ["v*"]
+
+jobs:
+  build-pypi:
+    name: Build & Publish PyPI
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+
+    environment:
+      name: pypi
+
+    permissions:
+      id-token: write
+      contents: write
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.13"
+
+      - name: Build distribution
+        run: uv build
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          skip-existing: true
+
+      - name: Upload PyPI Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: pypi-dist
+          path: dist/*
+
+  build-executables:
+    name: Build Executable (${{ matrix.os }})
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            label: linux-x86_64
+            icon_ext: png
+          - os: macos-latest
+            label: macos-arm64
+            icon_ext: icns
+          - os: windows-latest
+            label: windows-x86_64
+            icon_ext: ico
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install Dependencies
+        shell: bash
+        run: |
+          uv venv --allow-existing || true
+          # Installing explicit dependencies ensures they exist in the venv
+          uv pip install pillow requests pyinstaller .
+
+      - name: Create Logo Script
+        shell: bash
+        run: |
+          cat <<EOF > prepare_logo.py
+          import requests
+          from PIL import Image
+          from io import BytesIO
+          
+          URL = "https://raw.githubusercontent.com/varphi-lang/.github/refs/heads/main/profile/assets/VarphiLogo.png"
+          TARGET_EXT = "${{ matrix.icon_ext }}"
+          OUTPUT = f"logo.{TARGET_EXT}"
+          
+          try:
+              print(f"Downloading logo from {URL}...")
+              resp = requests.get(URL)
+              resp.raise_for_status()
+              img = Image.open(BytesIO(resp.content))
+              
+              if TARGET_EXT == "ico":
+                  img.save(OUTPUT, format='ICO', sizes=[(256, 256), (128, 128), (64, 64), (48, 48), (32, 32), (16, 16)])
+              elif TARGET_EXT == "icns":
+                  img.save(OUTPUT, format='ICNS')
+              else:
+                  img.save(OUTPUT, format='PNG')
+              print(f"Success: Created {OUTPUT}")
+          except Exception as e:
+              print(f"Error processing logo: {e}")
+              exit(1)
+          EOF
+
+      - name: Run Logo Script
+        shell: bash
+        run: uv run python prepare_logo.py
+
+      - name: Run PyInstaller
+        shell: bash
+        run: |
+          ICON_FILE="logo.${{ matrix.icon_ext }}"
+          
+          uv run python -m PyInstaller --onefile \
+            --name ampliphi \
+            --icon="$ICON_FILE" \
+            --collect-all "ampliphi" \
+            --clean \
+            src/ampliphi/main.py
+
+      - name: Rename Artifacts
+        shell: bash
+        run: |
+          cd dist
+          SUFFIX="${{ matrix.label }}"
+          
+          if [ "${{ runner.os }}" = "Windows" ]; then
+            mv "ampliphi.exe" "ampliphi-${SUFFIX}.exe"
+          else
+            mv "ampliphi" "ampliphi-${SUFFIX}"
+          fi
+
+      - name: Upload Executable Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: exe-${{ matrix.label }}
+          path: dist/ampliphi-*
+
+  release:
+    name: Create GitHub Release
+    needs: [build-pypi, build-executables]
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-release
+
+    permissions:
+      contents: write
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: release_assets
+          merge-multiple: true
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: release_assets/*
+          generate_release_notes: true
+          make_latest: true

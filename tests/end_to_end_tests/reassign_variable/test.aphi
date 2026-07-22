@@ -1,0 +1,6 @@
+int Reassign;
+
+procedure main {
+    Reassign = 4;
+    Reassign = 7;
+}

@@ -1,0 +1,20 @@
+int[3] A;
+int IDX;
+int OUT;
+
+procedure writeVal {
+    A[IDX] = 99;
+}
+
+procedure readVal {
+    OUT = A[IDX];
+}
+
+procedure main {
+    A[0] = 1;
+    A[1] = 2;
+    A[2] = 3;
+
+    invoke writeVal;
+    invoke readVal;
+}

@@ -1,0 +1,13 @@
+int A;
+int B;
+int DIFF;
+bool COND;
+
+procedure main {
+    COND = A > B;
+    if (COND) {
+        DIFF = A - B;
+    } else {
+        DIFF = B - A;
+    }
+}

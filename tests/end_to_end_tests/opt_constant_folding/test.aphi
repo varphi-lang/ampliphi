@@ -1,0 +1,17 @@
+int A;
+bool B;
+int C;
+int D;
+bool TEMP;
+
+procedure main {
+    D = 5 + 10;
+    A = D - 3;
+    TEMP = A > 10;
+    B = TEMP && true;
+    if (B) {
+        C = 100;
+    } else {
+        C = 200;
+    }
+}

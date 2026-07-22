@@ -1,0 +1,9 @@
+/*
+Demonstrates: Invalid use of binary operators
+*/
+
+int x;
+
+procedure main {
+    x = 1 + 2 + 3;
+}

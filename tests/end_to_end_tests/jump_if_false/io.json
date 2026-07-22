@@ -1,0 +1,10 @@
+[
+    {
+        "input": {"COND": true},
+        "output": {"COND": true, "RES": 1}
+    },
+    {
+        "input": {"COND": false},
+        "output": {"COND": false, "RES": 0}
+    }
+]

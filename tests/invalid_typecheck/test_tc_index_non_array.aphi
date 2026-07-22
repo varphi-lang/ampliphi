@@ -1,0 +1,7 @@
+int X;
+int I;
+
+procedure main {
+    I = 0;
+    X[I] = 5;
+}

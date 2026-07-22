@@ -1,0 +1,14 @@
+/*
+Type-check error: Invalid operand for '<' (expected int, got bool).
+Right operand of '<' is bool.
+*/
+
+int x;
+bool b;
+bool r;
+
+procedure main {
+    x = 3;
+    b = false;
+    r = x < b;
+}

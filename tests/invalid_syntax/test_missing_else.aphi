@@ -1,0 +1,11 @@
+/*
+Demonstrates: Missing else block
+*/
+
+bool cond;
+
+procedure main {
+    if (cond) {
+        cond = true;
+    }
+}

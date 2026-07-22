@@ -1,0 +1,5 @@
+int[0] A;
+
+procedure main {
+    A[0] = 1;
+}

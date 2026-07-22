@@ -1,0 +1,20 @@
+int A;
+bool T;
+bool F;
+
+procedure main {
+    T = true;
+    F = false;
+    
+    if (T) {
+        A = 10;
+    } else {
+        A = 20;
+    }
+    
+    if (F) {
+        A = A + 100;
+    } else {
+        A = A + 200;
+    }
+}

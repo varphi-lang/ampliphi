@@ -1,0 +1,10 @@
+/*
+Type-check error: Unknown identifier 'y'.
+Uses an undeclared variable in the right-hand side of an assignment.
+*/
+
+int x;
+
+procedure main {
+    x = y;
+}

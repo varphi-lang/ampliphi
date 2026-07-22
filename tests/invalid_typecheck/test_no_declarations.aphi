@@ -1,0 +1,7 @@
+/*
+Demonstrates: A valid program with no variable declarations at all.
+Only contains a single empty main procedure.
+*/
+
+procedure main {
+}

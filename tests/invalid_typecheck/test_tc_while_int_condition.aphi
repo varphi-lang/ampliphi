@@ -1,0 +1,13 @@
+/*
+Type-check error: Condition of 'while' must be bool, but 'n' has type int.
+Uses an int variable as the while condition.
+*/
+
+int n;
+
+procedure main {
+    n = 10;
+    while (n) {
+        n = n - 1;
+    }
+}

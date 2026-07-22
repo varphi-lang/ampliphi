@@ -1,0 +1,13 @@
+int A;
+int B;
+int MAX;
+bool COND;
+
+procedure main {
+    COND = A > B;
+    if (COND) {
+        MAX = A;
+    } else {
+        MAX = B;
+    }
+}

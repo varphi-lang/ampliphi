@@ -1,0 +1,7 @@
+/*
+Parser error: Missing opening brace in procedure body.
+*/
+
+procedure main
+    x = 1;
+}

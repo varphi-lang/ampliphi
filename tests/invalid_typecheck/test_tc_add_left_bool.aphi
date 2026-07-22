@@ -1,0 +1,14 @@
+/*
+Type-check error: Invalid operand for '+' (expected int, got bool).
+Left operand of '+' is bool.
+*/
+
+bool b;
+int x;
+int r;
+
+procedure main {
+    b = true;
+    x = 1;
+    r = b + x;
+}

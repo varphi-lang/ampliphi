@@ -1,0 +1,21 @@
+int[3] ARR;
+int A;
+int B;
+int C;
+int UNKNOWNIDX;
+
+procedure main {
+    ARR[0] = 10;
+    ARR[1] = 20;
+    ARR[2] = 30;
+    
+    // These should be folded to 30 and 30
+    A = ARR[0] + ARR[1];
+    C = ARR[2];
+    
+    // Write to an unknown index (UNKNOWNIDX comes from input)
+    ARR[UNKNOWNIDX] = 100;
+    
+    // This cannot be folded because the previous write might have overwritten ARR[0]
+    B = ARR[0];
+}

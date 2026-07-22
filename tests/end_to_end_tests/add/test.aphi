@@ -1,0 +1,7 @@
+int A;
+int B;
+int C;
+
+procedure main {
+    C = A + B;
+}

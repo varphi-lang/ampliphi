@@ -1,0 +1,7 @@
+int[3] A;
+int X;
+
+procedure main {
+    X = 5;
+    A = X;
+}

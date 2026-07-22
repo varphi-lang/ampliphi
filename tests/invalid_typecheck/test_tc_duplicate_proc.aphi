@@ -1,0 +1,10 @@
+/*
+Type-check error: Redefinition of identifier (duplicate procedure name).
+Two procedures share the same name 'main'.
+*/
+
+procedure main {
+}
+
+procedure main {
+}

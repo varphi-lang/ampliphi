@@ -1,0 +1,10 @@
+/*
+Type-check error: Cannot assign bool expression to int variable.
+Assigns 'true' (bool) to variable 'x' (int).
+*/
+
+int x;
+
+procedure main {
+    x = true;
+}

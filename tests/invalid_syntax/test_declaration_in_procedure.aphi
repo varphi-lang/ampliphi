@@ -1,0 +1,7 @@
+/*
+Demonstrates: Invalid case of variable declaration inside procedure
+*/
+
+procedure main {
+    int x;
+}

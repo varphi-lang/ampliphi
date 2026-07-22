@@ -1,0 +1,10 @@
+/*
+Parser error: Assignment statement at global scope.
+Statements can only appear inside procedure bodies.
+*/
+
+int x;
+x = 5;
+
+procedure main {
+}

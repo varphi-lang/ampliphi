@@ -1,0 +1,10 @@
+/*
+Type-check error: Cannot assign int expression to bool variable.
+Assigns '42' (int) to variable 'flag' (bool).
+*/
+
+bool flag;
+
+procedure main {
+    flag = 42;
+}
