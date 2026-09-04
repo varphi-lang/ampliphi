@@ -162,6 +162,13 @@ class IRLowerer(NodeVisitor[str | None]):
         right = self.visit(node.right)
         ir_op = op_map[node.op]
 
+        # Prevent tape collisions if left and right are the same variable
+        # We do this by copying right to a fresh temp
+        if left == right:
+            new_right = self._fresh_temp()
+            self._program.add(IRCopy(dest=new_right, src=right))
+            right = new_right
+
         
         # Assign the result of the operation to a temp, and return the name of the temp
         dest = self._fresh_temp()
