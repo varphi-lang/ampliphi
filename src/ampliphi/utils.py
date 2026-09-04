@@ -210,40 +210,34 @@ def collect_variable_values(declarations: list[VariableInfo]) -> dict:
 
 def run_varphi_program(program: str, tape_values: list[int]) -> list[int]:
     from vp2py import VarphiToPythonCompiler
-    from contextlib import redirect_stdout, redirect_stderr
-    import io
-    import sys
-
+    from vp2py.lib import run_machine, Tape
+    from varphi_devkit import Character, BuiltinSymbol
+    
     python_code = VarphiToPythonCompiler().compile(program)
+    
+    # Create a fresh namespace and don't set __name__ == "__main__"
+    # We do this so the compiled program doesn't ask for stdin
+    namespace = {}
+    exec(python_code, namespace)
+    
+    initial_state = namespace["initial_state"]
+    k = namespace["k"]
+    state_registry = namespace["state_registry"]
 
-    # Prepare the input
-    lines = [str(len(tape_values))]
+    # Construct the tape objects programmatically
+    tapes = []
     for value in tape_values:
-        lines.append('1' * value)
-    lines.append("") # One empty line
+        # Convert each integer to a unary tape
+        tapes.append(Tape([Character("1") for _ in range(value)]))
     
-    # Override stdin and argv before execing
-    old_stdin = sys.stdin
-    old_argv = sys.argv
-    sys.stdin = io.StringIO("\n".join(lines))
-    sys.argv = ["varphi_runtime"]  # Provide a dummy script name
-
-    new_stdout = io.StringIO()
-    new_stderr = io.StringIO()
-    try:
-        with redirect_stdout(new_stdout), redirect_stderr(new_stderr):
-            exec(python_code, {"__name__": "__main__"})
-    finally:
-        # Always restore sys variables even if exec fails
-        sys.stdin = old_stdin
-        sys.argv = old_argv
-
-    # Now process the output
-    output_lines = new_stdout.getvalue().splitlines()
+    # Run the machine and inspect the returned TuringMachine object
+    # Then extract output data
+    tm = run_machine(k, initial_state, state_registry, tuple(tapes))
+    
     new_tape_values = []
-    
-    for i in range(len(tape_values)):
-        # Output lines are 1-indexed for tapes
-        line = output_lines[i + 1]
-        new_tape_values.append(line.count('1'))
+    for tape in tm.tapes:
+        # Count the number of '1' Characters on the tape
+        ones = sum(1 for val in tape._tape.values() if isinstance(val, Character) and val.value == "1")
+        new_tape_values.append(ones)
+        
     return new_tape_values

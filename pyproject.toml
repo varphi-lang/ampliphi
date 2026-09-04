@@ -1,6 +1,6 @@
 [project]
 name = "ampliphi"
-version = "1.0.5"
+version = "1.0.6"
 description = "A compiler for Ampliphi with target Varphi."
 readme = "README.md"
 authors = [
@@ -13,7 +13,7 @@ dependencies = [
     "questionary",
     "rich",
     "typer",
-    "vp2py>=4.0.0",
+    "vp2py>=4.0.1",
 ]
 
 [project.scripts]
