@@ -59,7 +59,7 @@ class ConstantFoldingPass(IRPass):
                     if idx_val != "BOTTOM":
                         # We know the index, so we can load the specific known value
                         # Clamp the index to the last element
-                        idx_val = min(int(idx_val), program.arrays[a])
+                        idx_val = min(int(idx_val), program.arrays[a] - 1)
                         state[d] = state.get(f"{a}[{idx_val}]", "BOTTOM")
                     else:
                         # Unknown index, so the loaded value is unknown
@@ -70,7 +70,7 @@ class ConstantFoldingPass(IRPass):
                     if idx_val != "BOTTOM":
                         # We know the index, so we can store at that index
                         # Clamp the index to the last element
-                        idx_val = min(int(idx_val), program.arrays[a])
+                        idx_val = min(int(idx_val), program.arrays[a] - 1)
                         state[f"{a}[{idx_val}]"] = v_val
                     else:
                         # We don't know which index is written, so ALL index values become unknown (any of them could have been written)
