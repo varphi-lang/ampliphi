@@ -209,7 +209,7 @@ def collect_variable_values(declarations: list[VariableInfo]) -> dict:
 
 
 def run_varphi_program(program: str, tape_values: list[int]) -> list[int]:
-    from vp2py import VarphiToPythonCompiler
+    from varphi_python import VarphiToPythonCompiler
     from contextlib import redirect_stdout, redirect_stderr
     import io
     import sys
@@ -221,15 +221,22 @@ def run_varphi_program(program: str, tape_values: list[int]) -> list[int]:
     for value in tape_values:
         lines.append('1' * value)
     lines.append("") # One empty line
-    # Override stdin before execing
+    
+    # Override stdin and argv before execing
     old_stdin = sys.stdin
+    old_argv = sys.argv
     sys.stdin = io.StringIO("\n".join(lines))
+    sys.argv = ["varphi_runtime"]  # Provide a dummy script name
 
     new_stdout = io.StringIO()
     new_stderr = io.StringIO()
-    with redirect_stdout(new_stdout), redirect_stderr(new_stderr):
-        exec(python_code, {"__name__": "__main__"})
-    sys.stdin = old_stdin
+    try:
+        with redirect_stdout(new_stdout), redirect_stderr(new_stderr):
+            exec(python_code, {"__name__": "__main__"})
+    finally:
+        # Always restore sys variables even if exec fails
+        sys.stdin = old_stdin
+        sys.argv = old_argv
 
     # Now process the output
     output_lines = new_stdout.getvalue().splitlines()
