@@ -138,6 +138,7 @@ jobs:
             --name ampliphi \
             --icon="$ICON_FILE" \
             --collect-all "ampliphi" \
+            --collect-all "vp2py" \
             --clean \
             run.py
 
