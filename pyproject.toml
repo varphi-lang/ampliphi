@@ -10,10 +10,10 @@ authors = [
 ]
 requires-python = ">=3.13"
 dependencies = [
-    "questionary>=2.1.1",
-    "rich>=14.3.2",
-    "typer>=0.21.1",
-    "varphi-python>=2.0.6",
+    "questionary",
+    "rich",
+    "typer",
+    "vp2py>=4.0.0",
 ]
 
 [project.scripts]
