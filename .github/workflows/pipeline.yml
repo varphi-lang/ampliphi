@@ -118,7 +118,7 @@ jobs:
             --icon="$ICON_FILE" \
             --collect-all "ampliphi" \
             --clean \
-            src/ampliphi/main.py
+            run.py
 
       - name: Rename Artifacts
         shell: bash
