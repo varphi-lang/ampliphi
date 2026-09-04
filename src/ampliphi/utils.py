@@ -209,7 +209,7 @@ def collect_variable_values(declarations: list[VariableInfo]) -> dict:
 
 
 def run_varphi_program(program: str, tape_values: list[int]) -> list[int]:
-    from varphi_python import VarphiToPythonCompiler
+    from vp2py import VarphiToPythonCompiler
     from contextlib import redirect_stdout, redirect_stderr
     import io
     import sys
